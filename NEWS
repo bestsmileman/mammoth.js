@@ -1,252 +1,3 @@
-# 1.11.0
-
-* Ignore style definitions using a style ID that has already been used.
-
-* Disable external file accesses by default. External file access can be enabled
-  using the externalFileAccess option.
-
-* Handle numbering levels defined without an index.
-
-# 1.10.0
-
-* Add "Heading" and "Body" styles, as found in documents created by Apple Pages,
-  to the default style map.
-
-* Handle structured document tags representing checkboxes wrapped in other
-  elements, such as table cells. Previously, the wrapping elements would have
-  been ignored.
-
-* Ignore deleted table rows.
-
-* Add notes on security.
-
-* Revert the change to explicitly use commonjs modules. This appeared to cause
-  issues with some bundlers such as webpack when using mammoth.browser.js.
-
-# 1.9.1
-
-* Ignore AlternateContent elements when there is no Fallback element.
-
-* Explicitly use commonjs modules. Since the modules should have previously been
-  implicitly treated as commonjs modules, this shouldn't affect behaviour.
-
-# 1.9.0
-
-* Update lop to 0.4.2, which removes the use of the util module when there are
-  errors during parsing. This should remove the need to polyfill util in the
-  browser.
-
-* Detect checkboxes, both as complex fields and structured document tags, and
-  convert them to checkbox inputs.
-
-# 1.8.0
-
-* Add style mapping for highlights.
-
-# 1.7.2
-
-* Remove the use of the path module from common code used by browser builds.
-  This should remove the need to polyfill path in the browser.
-
-# 1.7.1
-
-* Handle numbering level definitions without an explicit format.
-
-* Switch the precedence of numbering properties in paragraph properties and the
-  numbering in paragraph styles so that the numbering properties in paragraph
-  properties takes precedence.
-
-# 1.7.0
-
-* Support attributes in HTML paths in style mappings.
-
-* Improve error message when failing to find the body element in a document.
-
-* Add support for the strict document format.
-
-# 1.6.0
-
-* Add transformDocument to the TypeScript declarations.
-
-* Support merged paragraphs when revisions are tracked.
-
-* Use xmldom instead of sax to parse XML documents. This should remove the need
-  to polyfill stream in the browser.
-
-* Adjust the internal implementation to remove the use of Buffer on the critical
-  path, and provide APIs to read images and documents with embedded style maps
-  without using Buffer. This should remove the need to polyfill Buffer in the
-  browser. Since TextDecoder is now used, the minimum version of node.js is now
-  v12.
-
-* Remove the use of the util module. This should remove the need to polyfill
-  util in the browser.
-
-# 1.5.1
-
-* Fix: npm 7 changed the behaviour of prepublish, causing the browser build not
-  to be updated before publishing to npm. We now use prepare instead of
-  prepublish, which has the same behaviour that prepublish previously had.
-
-# 1.5.0
-
-* Only use the alt text of image elements as a fallback. If an alt attribute is
-  returned from the function passed to mammoth.images.imgElement, that value
-  will now be preferred to the alt text of the image element.
-
-# 1.4.21
-
-* Ignore w:u elements when w:val is missing.
-
-# 1.4.20
-
-* Emit warning instead of throwing exception when image file cannot be found for
-  a:blip elements.
-
-# 1.4.19
-
-* Add TypeScript declarations.
-
-# 1.4.18
-
-* When extracting raw text, convert tab elements to tab characters.
-
-* Handle internal hyperlinks created with complex fields.
-
-* Update JSZip to 3.2.0. This addresses CVE-2021-23413 in JSZip.
-
-# 1.4.17
-
-* Handle w:num with invalid w:abstractNumId.
-* Update underscore to 1.13.1.
-
-# 1.4.16
-
-* Convert symbols in supported fonts to corresponding Unicode characters.
-
-# 1.4.15
-
-* Support numbering defined by paragraph style.
-
-# 1.4.14
-
-* Add style mapping for all caps.
-
-# 1.4.13
-
-* Use package-lock.json instead of npm-shrinkwrap.json.
-
-# 1.4.12
-
-* Handle underline elements where w:val is "none".
-
-# 1.4.11
-
-* Re-publishing to remove superfluous files.
-
-# 1.4.10
-
-* Read font size for runs.
-* Support soft hyphens.
-
-# 1.4.9
-
-* Allow hyperlinks to be collapsed.
-
-# 1.4.8
-
-* Improve list support by following w:numStyleLink in w:abstractNum.
-
-# 1.4.7
-
-* Update xmlbuilder dependency.
-
-# 1.4.6
-
-* Fix: default style mappings caused footnotes, endnotes and comments
-  containing multiple paragraphs to be converted into a single paragraph.
-
-# 1.4.5
-
-* When using the pretty HTML writer, don't format HTML inside pre elements.
-
-* Read the children of v:rect elements.
-
-# 1.4.4
-
-* Parse paragraph indents.
-
-* Read part paths using relationships. This improves support for documents
-  created by Word Online.
-
-# 1.4.3
-
-* Add style mapping for small caps.
-
-* Add style mapping for tables.
-
-# 1.4.2
-
-* Read children of v:group elements.
-
-# 1.4.1
-
-* Read w:noBreakHyphen elements as non-breaking hyphen characters.
-
-# 1.4.0
-
-* Extract the default data URI image converter to the images module.
-
-* Add anchor on hyperlinks as fragment if present.
-
-* Convert target frames on hyperlinks to targets on anchors.
-
-* Detect header rows in tables and convert to thead > tr > th.
-
-# 1.3.6
-
-* Handle complex fields that do not have a "separate" fldChar.
-
-# 1.3.5
-
-* Add transforms.run.
-
-# 1.3.4
-
-* Read children of w:object elements.
-
-# 1.3.3
-
-* Handle hyperlinks created with complex fields.
-
-# 1.3.2
-
-* Handle absolute paths within zip files. This should fix an issue where some
-  images within a document couldn't be found.
-
-# 1.3.1
-
-* Add getDescendants() and getDescendantsOfType() to transforms module.
-
-* Add font property to runs.
-
-# 1.3.0
-
-* Allow style names to be mapped by prefix. For instance:
-
-      r[style-name^='Code '] => code
-
-* Add default style mappings for Heading 5 and Heading 6.
-
-* Allow escape sequences in style IDs, style names and CSS class names.
-
-* Allow a separator to be specified when HTML elements are collapsed.
-
-* Add includeEmbeddedStyleMap option to allow embedded style maps to be
-  disabled.
-
-* Include embedded styles when explicit style map is passed.
-
 # 1.2.5
 
 * Ignore bold, italic, underline and strikethrough elements that have a value of
@@ -276,7 +27,7 @@
 
 * Generate messages of type "error" instead of "warning" when image conversion
   throws an exception.
-
+  
 * Use alt text title as alt text for images when the alt text description is
   blank.
 
@@ -374,7 +125,7 @@
 
 * Generate warnings for not-understood style mappings and continue, rather than
   stopping with an error.
-
+  
 * Add support for embedded style maps.
 
 * Add support for linked images.
@@ -499,9 +250,9 @@
 
 * Allow paragraphs and runs to be matched by style name. For instance, to match
   a paragraph with the style name `Heading 1`:
-
+  
     p[style-name='Heading 1']
-
+    
 * Use an array of raw strings rather than an array of style mappings when
   passing options to convertToHtml.
 
